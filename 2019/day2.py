@@ -43,6 +43,7 @@ def pairs(max):
 
 
 if __name__ == "__main__":
+    # part one samples
     assert(run([1, 0, 0, 0, 99]) == 2)
     assert(run([2, 4, 4, 5, 99, 0]) == 2)
     assert(run([2, 3, 0, 3, 99]) == 2)
@@ -55,6 +56,7 @@ if __name__ == "__main__":
     program[2] = 2
     print("Terminated with: ", run(program))
 
+    # part 2 - is there a better way than brute force?
     max = 99
     for noun, verb in pairs(max):
         program = orig_program.copy()

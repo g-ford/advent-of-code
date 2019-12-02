@@ -19,11 +19,13 @@ def calc_with_fuel(modules):
 
 
 if __name__ == "__main__":
+    # part one samples
     assert(required_fuel(12) == 2)
     assert(required_fuel(14) == 2)
     assert(required_fuel(1969) == 654)
     assert(required_fuel(100756) == 33583)
 
+    # part two samples
     assert(fuel_calc(14) == 2)
     assert(fuel_calc(1969) == 966)
     assert(fuel_calc(100756) == 50346)
