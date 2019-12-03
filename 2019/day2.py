@@ -1,6 +1,6 @@
 
 
-def op1(pointer, program):
+def add(pointer, program):
     A = program[program[pointer + 1]]
     B = program[program[pointer + 2]]
     C = program[pointer + 3]
@@ -8,7 +8,7 @@ def op1(pointer, program):
     return False, pointer + 4, program
 
 
-def op2(pointer, program):
+def mul(pointer, program):
     A = program[program[pointer + 1]]
     B = program[program[pointer + 2]]
     C = program[pointer + 3]
@@ -16,7 +16,7 @@ def op2(pointer, program):
     return False, pointer + 4, program
 
 
-def op99(current_pos, program):
+def halt(current_pos, program):
     return True, 0, program
 
 
@@ -25,9 +25,9 @@ def run(program):
     pointer = 0
 
     opcodes = {
-        1: op1,
-        2: op2,
-        99: op99
+        1: add,
+        2: mul,
+        99: halt
     }
 
     while(not halted):
