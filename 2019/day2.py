@@ -49,7 +49,7 @@ if __name__ == "__main__":
     assert(run([2, 3, 0, 3, 99]) == 2)
     assert(run([1, 1, 1, 4, 99, 5, 6, 0, 99]) == 30)
 
-    orig_program = list(map(int, open('day2.txt').read().split(',')))
+    orig_program = list(map(int, open('inputs/day2.txt').read().split(',')))
 
     program = orig_program.copy()
     program[1] = 12

@@ -30,6 +30,6 @@ if __name__ == "__main__":
     assert(fuel_calc(1969) == 966)
     assert(fuel_calc(100756) == 50346)
 
-    modules = open('day1.txt').readlines()
+    modules = open('inputs/day1.txt').readlines()
     print("initial fuel", calc(modules))
     print('inc fuel', calc_with_fuel(modules))
