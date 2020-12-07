@@ -1,31 +1,29 @@
 
-input = open('input.txt').readlines()
+def parseTreeLine(line):
+    line = line.strip()  # need to get rid of new line *sigh
+    return [0 if x == '.' else 1 for x in line]
 
 
-def getParts(line):
-    pattern, password = line.split(':')
-    password = password.strip()
-
-    range, letter = pattern.split()
-    min, max = map(int, range.split('-'))
-    return min, max, letter, password
+tree_map = list(map(parseTreeLine, open('input.txt').readlines()))
 
 
-def isValid(line):
-    min, max, letter, password = getParts(line)
-    return min <= password.count(letter) <= max
+def treesInSlope(tree_map, slope=3, step=1):
+    trees = 0
+    row_len = len(tree_map[0])
+    for i, row in enumerate(tree_map):
+        if step == 1 or i % step == 0:
+            r_i = (slope*i//step) % row_len
+            trees += row[r_i]
+    return trees
 
 
-def isValid2(line):
-    min, max, letter, password = getParts(line)
-    count = [password[min-1] == letter, password[max-1] == letter]
-    return sum(count) == 1
+print("Part 1:", treesInSlope(tree_map))
 
+s1 = treesInSlope(tree_map, 1)
+s3 = treesInSlope(tree_map, 3)
+s5 = treesInSlope(tree_map, 5)
+s7 = treesInSlope(tree_map, 7)
+s1_2 = treesInSlope(tree_map, 1, 2)
 
-# input = ["1-3 a: abcde",
-#          "1-3 b: cdefg",
-#          "2-9 c: ccccccccc"
-#          ]
-
-print("Part 1: Valid count: ", sum(isValid(x) for x in input))
-print("Part 2: Valid count: ", sum(isValid2(x) for x in input))
+print("Part 2:", s1, s3,  s5,  s7,  s1_2)
+print("Part 2:", s1 * s3 * s5 * s7 * s1_2)
