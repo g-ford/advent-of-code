@@ -1,4 +1,5 @@
-from collections import Counter, defaultdict
+from collections import Counter
+from utils import log_time
 
 
 def parse_points(line):
@@ -35,15 +36,24 @@ def gen_points(from_points):
     return points
 
 
+@log_time
+def part_a(input):
+    filtered = [x for x in input if x[0][0] == x[1][0] or x[0][1] == x[1][1]]
+    counts = Counter(gen_points(filtered))
+    overlaps = [k for k, v in counts.items() if v > 1]
+    return len(overlaps)
+
+
+@log_time
+def part_b(input):
+    counts = Counter(gen_points(input))
+    overlaps = [k for k, v in counts.items() if v > 1]
+    return len(overlaps)
+
+
 input = list(map(parse_points, open('day5/input.txt').readlines()))
-filtered = [x for x in input if x[0][0] == x[1][0] or x[0][1] == x[1][1]]
 
-
-counts = Counter(gen_points(filtered))
-overlaps = [k for k, v in counts.items() if v > 1]
-print("Part A:", len(overlaps))
-
-
-counts = Counter(gen_points(input))
-overlaps = [k for k, v in counts.items() if v > 1]
-print("Part B:", len(overlaps))
+result_a = part_a(input)
+result_b = part_b(input)
+print("Part A:", result_a)
+print("Part B:", result_b)

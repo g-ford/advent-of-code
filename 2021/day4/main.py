@@ -1,4 +1,4 @@
-from utils import chunk, transpose
+from utils import chunk, transpose, log_time
 
 
 def parse_cards(rows):
@@ -9,12 +9,7 @@ def parse_cards(rows):
     return list(x for x in rows + cols)
 
 
-input = open('day4/input.txt').readlines()
-
-numbers_drawn = list(map(int, input[0].strip().split(',')))
-cards = list(map(parse_cards, chunk(input[1:], 6)))
-
-
+@log_time
 def win(numbers_drawn, cards):
     # start with 5 numbers cause you can't win with less
     for i in range(5, len(numbers_drawn)):
@@ -25,6 +20,7 @@ def win(numbers_drawn, cards):
                     return card, current_nums
 
 
+@log_time
 def lose(numbers_drawn, cards):
     loser = ()
     winners = []
@@ -39,14 +35,19 @@ def lose(numbers_drawn, cards):
     return loser
 
 
-card, nums = win(numbers_drawn, cards)
+@log_time
+def calc_score(result):
+    card, nums = result
+    unmarked = set(n for g in card for n in g if n not in nums)
+    return sum(unmarked) * nums[-1]
 
-# assumes there are no duplicates on a game
-unmarked = set(n for g in card for n in g if n not in nums)
-print("Part A:", sum(unmarked) * nums[-1])
 
-card, nums = lose(numbers_drawn, cards)
+input = open('day4/input.txt').readlines()
 
-# assumes there are no duplicates on a game
-unmarked = set(n for g in card for n in g if n not in nums)
-print("Part B:", sum(unmarked) * nums[-1])
+numbers_drawn = list(map(int, input[0].strip().split(',')))
+cards = list(map(parse_cards, chunk(input[1:], 6)))
+
+result_a = calc_score(win(numbers_drawn, cards))
+result_b = calc_score(lose(numbers_drawn, cards))
+print("Part A:", result_a)
+print("Part B:", result_b)

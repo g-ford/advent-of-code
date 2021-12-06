@@ -33,5 +33,7 @@ def run_sim2(fish, days):
     return sum(ages)
 
 
-print("Part A:", run_sim(input, 80))
-print("Part B:", run_sim2(input, 256))
+result_a = run_sim(input, 80)
+result_b = run_sim2(input, 256)
+print("Part A:", result_a)
+print("Part B:", result_b)
