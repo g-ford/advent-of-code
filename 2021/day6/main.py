@@ -1,8 +1,9 @@
-from pprint import pprint
+from utils import log_time
 
 input = list(map(int, open('day6/input.txt').readlines()[0].split(',')))
 
 
+@log_time
 def run_sim(fish, days):
     for _ in range(days):
         new_fish = []
@@ -17,6 +18,7 @@ def run_sim(fish, days):
     return len(fish)
 
 
+@log_time
 def run_sim2(fish, days):
     ages = [0] * 9
 
