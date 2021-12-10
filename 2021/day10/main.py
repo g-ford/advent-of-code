@@ -1,10 +1,6 @@
 from utils import log_time
 
 
-def parse_row(row):
-    pass
-
-
 @ log_time
 def part_a(input):
     points = {
