@@ -23,3 +23,8 @@ def log_time(method):
         print(f'[PERF] {method.__name__} {(te-ts)*1000:2f} ms')
         return result
     return timed
+
+
+def slide(seq, window):
+    for i in range(len(seq) - window + 1):
+        yield seq[i: i + window]
