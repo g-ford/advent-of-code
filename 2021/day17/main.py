@@ -4,15 +4,13 @@ import re
 
 @ log_time
 def part_a(x_min, x_max, y_min, y_max):
-    print(x_min, x_max, y_min, y_max)
     # I am sure there is way to calculate this, but let's do it the fun way :)
 
     def simulate(x, y):
         tx, ty = (0, 0)
         max_ty = 0
-        # max steps will be up the target depth, then back down to 0
-        # which will overshoot on the next step
-        for _ in range(abs(y_min) * 2):
+
+        while True:
             tx += x
             ty += y
             x = max(0, x-1)
