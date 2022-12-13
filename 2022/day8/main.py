@@ -1,4 +1,16 @@
 def count(t, r, step, i):
+    """
+    Count the number of 'scenic' trees near tree `t`
+
+    `r` is the set of trees to compare - either a row or column
+    `step` is the direction to search and should 1 or -1
+    `i` is the position of the x|y that we are looking for
+
+    Interestingly, apparently elves can see over trees but can't look up
+    If a tree is blocked by a larger tree that it still smaller than `t` then
+    we can still see it. e.g `t` being a tree of height 5 and `r` a set
+    of 4341 would count as 4
+    """
     if step < 0:
         over = list(reversed(r[:t[i]]))
     else:
@@ -33,6 +45,9 @@ def day8(input):
                 visible.add((x, y, input[x][y]))
             all_trees.add((x, y, input[x][y]))
 
+    # We do part 2 first as we don't care about trees on the edge
+    # and we have that set now before we start adding other visible
+    # trees to it
     scores = []
     for tree in sorted(all_trees - visible):
         row = sorted([t for t in all_trees if t[0] == tree[0]])
