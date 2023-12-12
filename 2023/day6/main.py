@@ -1,4 +1,12 @@
 
+# ❯ python -m day6.main
+# [PERF] parse_input 0.070095 ms
+# [PERF] parse_input_once_race 0.005007 ms
+# [PERF] part1 0.164032 ms
+# Part 1:  6209190
+# [PERF] part2 0.002146 ms
+# Part 2:  28545089
+
 import math
 import re
 
