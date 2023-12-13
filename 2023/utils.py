@@ -14,6 +14,10 @@ def chunk(seq, n):
         yield seq[i : i + n]
 
 
+def flatten(l):
+    return [item for sublist in l for item in sublist]
+
+
 def log_time(method):
     def timed(*args, **kwargs):
         ts = time.time()
