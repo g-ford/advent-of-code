@@ -51,3 +51,12 @@ def compass_neighbours(k, j):
         (k - 1, j),         (k + 1, j),
                  (k, j + 1),
     ]
+
+
+def manhatten_distance(p1, p2):
+    """ Calculate the manhatten distance between two points
+
+    Manhatten distance is the shortest distance between two points on a grid when
+    you can only move horizontally or vertically
+    """
+    return abs(p1[0] - p2[0]) + abs(p1[1] - p2[1])
