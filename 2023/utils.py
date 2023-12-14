@@ -38,12 +38,16 @@ def slide(seq, window):
 def neighbours(k, j):
     """Returns a list of indexes of the neighbours of k, j"""
     return [
-        (k - 1, j - 1),
-        (k, j - 1),
-        (k + 1, j - 1),
-        (k - 1, j),
-        (k + 1, j),
-        (k - 1, j + 1),
-        (k, j + 1),
-        (k + 1, j + 1),
+        (k - 1, j - 1), (k, j - 1),(k + 1, j - 1),
+        (k - 1, j),                (k + 1, j),
+        (k - 1, j + 1),(k, j + 1), (k + 1, j + 1),
+    ]
+
+
+def compass_neighbours(k, j):
+    """Returns a list of indexes of the neighbours of k, j"""
+    return [
+                 (k, j - 1),
+        (k - 1, j),         (k + 1, j),
+                 (k, j + 1),
     ]
