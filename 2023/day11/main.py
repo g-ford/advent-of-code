@@ -1,14 +1,19 @@
+# ❯ python -m day11.main
+# [PERF] parse_input 0.685930 ms
+# [PERF] part2 10.351181 ms
+# Part 1:  9565386
+# [PERF] part2 11.450768 ms
+# Part 2:  857986849428
 
 from itertools import combinations
 
-import networkx as nx
 from utils import log_time, manhatten_distance, transpose
 
 
 @log_time
 def part2(parts, expand=2):
     galaxies = []
-    # Expanding by once less than asked for, as we always add one to the end of
+    # Expanding by one less than asked for, as we always add one to the end of
     # each iteration
     expand = expand - 1
     r = 0
