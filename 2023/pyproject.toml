@@ -1,0 +1,26 @@
+[tool.poetry]
+name = "aoc-2023"
+version = "0.1.0"
+description = ""
+authors = ["Geoff Ford <g_ford@hotmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+networkx = "^3.2.1"
+
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+
+[tool.ruff]
+line-length = 120
+
+select = [
+    "E",
+    "F",
+    "W",
+]
