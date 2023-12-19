@@ -1,24 +1,24 @@
 import time
+from typing import Callable, Iterable, Sequence, TypeVar
+
+T = TypeVar("T")
+PointType = tuple[int, int]
 
 
-def transpose(seq):
+def transpose(seq: Iterable) -> Iterable:
     return list(zip(*seq))
 
 
-def to_dec(l):
-    return int("".join(map(str, l)), 2)
-
-
-def chunk(seq, n):
+def chunk(seq: Sequence, n: int) -> Iterable:
     for i in range(0, len(seq), n):
         yield seq[i : i + n]
 
 
-def flatten(l):
-    return [item for sublist in l for item in sublist]
+def flatten(nested: Iterable[Iterable]) -> Iterable:
+    return [item for sublist in nested for item in sublist]
 
 
-def log_time(method):
+def log_time(method: Callable) -> Callable:
     def timed(*args, **kwargs):
         ts = time.time()
         result = method(*args, **kwargs)
@@ -30,31 +30,37 @@ def log_time(method):
     return timed
 
 
-def slide(seq, window):
+def slide(seq: Sequence[T], window: int) -> Iterable[Sequence[T]]:
     for i in range(len(seq) - window + 1):
         yield seq[i : i + window]
 
 
-def neighbours(k, j):
+def neighbours(k: int, j: int) -> list[tuple[int, int]]:
     """Returns a list of indexes of the neighbours of k, j"""
     return [
-        (k - 1, j - 1), (k, j - 1),(k + 1, j - 1),
-        (k - 1, j),                (k + 1, j),
-        (k - 1, j + 1),(k, j + 1), (k + 1, j + 1),
+        (k - 1, j - 1),
+        (k, j - 1),
+        (k + 1, j - 1),
+        (k - 1, j),
+        (k + 1, j),
+        (k - 1, j + 1),
+        (k, j + 1),
+        (k + 1, j + 1),
     ]
 
 
-def compass_neighbours(k, j):
+def compass_neighbours(k: int, j: int) -> list[tuple[int, int]]:
     """Returns a list of indexes of the neighbours of k, j"""
     return [
-                 (k, j - 1),
-        (k - 1, j),         (k + 1, j),
-                 (k, j + 1),
+        (k, j - 1),
+        (k - 1, j),
+        (k + 1, j),
+        (k, j + 1),
     ]
 
 
-def manhatten_distance(p1, p2):
-    """ Calculate the manhatten distance between two points
+def manhatten_distance(p1: PointType, p2: PointType) -> int:
+    """Calculate the manhatten distance between two points
 
     Manhatten distance is the shortest distance between two points on a grid when
     you can only move horizontally or vertically

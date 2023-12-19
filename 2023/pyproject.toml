@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "aoc-2023"
+name = "2023"
 version = "0.1.0"
 description = ""
 authors = ["Geoff Ford <g_ford@hotmail.com>"]
@@ -10,6 +10,9 @@ python = "^3.11"
 networkx = "^3.2.1"
 
 
+
+[tool.poetry.group.dev.dependencies]
+mypy = "^1.7.1"
 
 [build-system]
 requires = ["poetry-core"]
