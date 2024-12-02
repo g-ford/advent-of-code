@@ -35,7 +35,7 @@ def part1(reports):
 
 @log_time
 def part2(reports):
-    return sum(1 for report in reports if is_safe_with_dampener2(report))
+    return sum(1 for report in reports if is_safe_with_dampener(report))
 
 
 @log_time
