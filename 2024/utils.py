@@ -71,3 +71,23 @@ def manhatten_distance(p1: PointType, p2: PointType) -> int:
     Manhatten distance is the shortest distance between two points on a grid when
     you can only move in the cardinal directions"""
     return abs(p1[0] - p2[0]) + abs(p1[1] - p2[1])
+
+
+def rotate_matrix_45_degress(li: list[list[int]]) -> list[list[int]]:
+    """Rotate a matrix 45 degrees clockwise"""
+    # Counter Variable
+    ctr = 0
+    out = []
+    n = len(li)
+    while(ctr < 2 * n-1):
+        lst = []
+
+        for i in range(n):
+            for j in range(n):
+                if i + j == ctr:
+                    lst.append(li[i][j])
+
+        out.append("".join(reversed(lst)))
+        ctr += 1
+
+    return out
